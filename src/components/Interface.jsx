@@ -48,9 +48,9 @@ const AboutSection = (props) => {
   return (
     <Section mobileTop>
       <h1 className="text-4xl md:text-6xl font-extrabold leading-snug mt-8 md:mt-0">
-        Hi, I'm
+        Hello, I'm
         <br />
-        <span className="bg-white px-1 italic">Wawa Sensei</span>
+        <span className=" px-1 italic">Luca</span>
       </h1>
       <motion.p
         className="text-lg text-gray-600 mt-4"
@@ -67,9 +67,9 @@ const AboutSection = (props) => {
           delay: 1.5,
         }}
       >
-        I make YouTube videos to help developers
+        I develop 3D visuals, user interfaces,
         <br />
-        learn how to build 3D apps
+        web application and game
       </motion.p>
       <motion.button
         onClick={() => setSection(3)}
