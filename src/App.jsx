@@ -1,58 +1,81 @@
-import { Scroll, ScrollControls } from "@react-three/drei";
+import { Model } from "./Scene";
 import { Canvas } from "@react-three/fiber";
-import { MotionConfig } from "framer-motion";
-import { Leva } from "leva";
-import { Suspense, useEffect, useState } from "react";
-import { Cursor } from "./components/Cursor";
-import { Experience } from "./components/Experience";
-import { Interface } from "./components/Interface";
-import { LoadingScreen } from "./components/LoadingScreen";
-import { Menu } from "./components/Menu";
-import { ScrollManager } from "./components/ScrollManager";
-import { framerMotionConfig } from "./config";
+import { OrbitControls } from "@react-three/drei";
+import { motion } from "framer-motion-3d";
+import React from "react";
+import "./App.css";
 
-function App() {
-  const [section, setSection] = useState(0);
-  const [started, setStarted] = useState(false);
-  const [menuOpened, setMenuOpened] = useState(false);
-
-  useEffect(() => {
-    setMenuOpened(false);
-  }, [section]);
-
+function About(props) {
+  const { setSection } = props;
   return (
-    <>
-      <LoadingScreen started={started} setStarted={setStarted} />
-      <MotionConfig
+    <div className="absolute top-0 left-5 p-8 text-white h-full flex flex-col justify-center">
+      <h1 className="text-4xl md:text-6xl font-extrabold leading-snug mt-8 md:mt-0">
+        Hello, We're
+        <br />
+        <span className="px-1 italic"> HeyDucks Team</span>
+      </h1>
+      <motion.p
+        className="text-lg text-gray-200 mt-4"
+        initial={{
+          opacity: 0,
+          y: 25,
+        }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
         transition={{
-          ...framerMotionConfig,
+          duration: 1,
+          delay: 1.5,
         }}
       >
-        <Canvas shadows camera={{ position: [0, 3, 10], fov: 42 }}>
-          <color attach="background" args={["#e6e7ff"]} />
-          <ScrollControls pages={4} damping={0.1}>
-            <ScrollManager section={section} onSectionChange={setSection} />
-            <Scroll>
-              <Suspense>
-                {started && (
-                  <Experience section={section} menuOpened={menuOpened} />
-                )}
-              </Suspense>
-            </Scroll>
-            <Scroll html>
-              {started && <Interface setSection={setSection} />}
-            </Scroll>
-          </ScrollControls>
-        </Canvas>
-        <Menu
-          onSectionChange={setSection}
-          menuOpened={menuOpened}
-          setMenuOpened={setMenuOpened}
-        />
-        <Cursor />
-      </MotionConfig>
-      <Leva hidden />
-    </>
+        We specialize in creating 3D visuals, 
+        <br />
+        designing user interfaces, and developing web applications.
+      </motion.p>
+      <motion.button
+        onClick={() => setSection(3)}
+        className="bg-indigo-600 text-white py-4 px-8 rounded-lg font-bold text-lg mt-4 md:mt-16"
+        initial={{
+          opacity: 0,
+          y: 25,
+        }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 1,
+          delay: 2,
+        }}
+      >
+        Contact us now
+      </motion.button>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div style={{ height: "100vh", position: "relative" }}>
+      <Canvas 
+        className="gradient-background"
+        style={{ height: "100%" }}
+        >
+        {/* <color attach="background" args={["#E87339"]} /> */}
+        <ambientLight intensity={0.5} />
+        <directionalLight position={[5, 5, 5]} intensity={1} />
+        <motion.group
+          rotation={[0.4, -Math.PI / 3, 0]}
+          scale={0.012}
+          position={[1.5, -0.5, 0]}
+        >
+          <Model />
+        </motion.group>
+        <OrbitControls minDistance={2} maxDistance={10} />
+      </Canvas>
+      <About />
+    </div>
   );
 }
 
