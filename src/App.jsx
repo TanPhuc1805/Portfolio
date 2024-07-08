@@ -9,13 +9,13 @@ function About(props) {
   const { setSection } = props;
   return (
     <div className="absolute top-0 left-5 p-8 text-white h-full flex flex-col justify-center">
-      <h1 className="text-4xl md:text-6xl font-extrabold leading-snug mt-8 md:mt-0">
+      <h1 className="text-4xl md:text-6xl font-[K2D] leading-snug mt-8 md:mt-0">
         Hello, We're
         <br />
-        <span className="px-1 italic"> HeyDucks Team</span>
+        <span className="px-1 font-[K2D]" > HeyDucks Team</span>
       </h1>
       <motion.p
-        className="text-lg text-gray-200 mt-4"
+        className="text-lg text-gray-200 mt-4 font-[K2D]"
         initial={{
           opacity: 0,
           y: 25,
@@ -35,7 +35,7 @@ function About(props) {
       </motion.p>
       <motion.button
         onClick={() => setSection(3)}
-        className="bg-indigo-600 text-white py-4 px-8 rounded-lg font-bold text-lg mt-4 md:mt-16"
+        className="bg-indigo-600 text-white py-4 px-8 rounded-lg font-[K2D] text-lg mt-4 md:mt-16"
         initial={{
           opacity: 0,
           y: 25,
