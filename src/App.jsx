@@ -4,6 +4,8 @@ import { OrbitControls } from "@react-three/drei";
 import { motion } from "framer-motion-3d";
 import React from "react";
 import "./App.css";
+import "./NavigationBar"
+import NavigationBar from "./NavigationBar";
 
 function About(props) {
   const { setSection } = props;
@@ -69,14 +71,16 @@ function Model3D(){
         </motion.group>
         <OrbitControls minDistance={2} maxDistance={10} />
       </Canvas>
-  )
+  );
 }
+
 
 function App() {
   return (
     <div className="relative h-screen">
       <About />
       <Model3D />
+      <NavigationBar/>
       <div className="gradient-background absolute inset-0 z-[-1]">
         <div className="gradients-container">
           <div className="g1"></div>

@@ -1,6 +1,6 @@
 :root {
-  --color-bg1: rgb(207, 60, 60);
-  --color-bg2: rgb(0, 17, 82);
+  --color-bg1: rgb(192, 26, 26);
+  --color-bg2: rgb(12, 29, 96);
   --color1: 18, 113, 255;
   --color2: 221, 74, 255;
   --color3: 100, 220, 255;
@@ -63,7 +63,7 @@ svg {
 
 
 .gradients-container {
-  filter: url(#goo) blur(20px) ;
+  filter: url(#goo) blur(40px) ;
   width: 100%;
   height: 100%;
 }
