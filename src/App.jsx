@@ -54,14 +54,9 @@ function About(props) {
     </div>
   );
 }
-
-function App() {
+function Model3D(){
   return (
-    <div style={{ height: "100vh", position: "relative" }}>
-      <Canvas 
-        className="gradient-background"
-        style={{ height: "100%" }}
-        >
+    <Canvas style={{ height: "100%" }}>
         {/* <color attach="background" args={["#E87339"]} /> */}
         <ambientLight intensity={0.5} />
         <directionalLight position={[5, 5, 5]} intensity={1} />
@@ -74,7 +69,23 @@ function App() {
         </motion.group>
         <OrbitControls minDistance={2} maxDistance={10} />
       </Canvas>
+  )
+}
+
+function App() {
+  return (
+    <div className="relative h-screen">
       <About />
+      <Model3D />
+      <div className="gradient-background absolute inset-0 z-[-1]">
+        <div className="gradients-container">
+          <div className="g1"></div>
+          <div className="g2"></div>
+          <div className="g3"></div>
+          <div className="g4"></div>
+          <div className="g5"></div>
+        </div>
+      </div>
     </div>
   );
 }
