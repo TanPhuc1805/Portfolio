@@ -61,11 +61,11 @@ function Model3D(){
     <Canvas style={{ height: "100%" }}>
         {/* <color attach="background" args={["#E87339"]} /> */}
         <ambientLight intensity={0.5} />
-        <directionalLight position={[5, 5, 5]} intensity={1} />
+        <directionalLight position={[5, 5, 5]} intensity={3} />
         <motion.group
-          rotation={[0.4, -Math.PI / 3, 0]}
-          scale={0.012}
-          position={[1.5, -0.5, 0]}
+          rotation={[0.4, -Math.PI / 3, 0.1]}
+          scale={0.4}
+          position={[2.25, -0.5, 0]}
         >
           <Model />
         </motion.group>
