@@ -5,7 +5,7 @@ import { OrbitControls } from "@react-three/drei";
 import { motion } from "framer-motion-3d";
 import React from "react";
 import "./App.css";
-import "./components/NavigationBar/NavigationBar"
+import "./components/NavigationBar/NavigationBar";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
 
 function About(props) {
@@ -15,7 +15,7 @@ function About(props) {
       <h1 className="text-4xl md:text-6xl font-[K2D] leading-snug mt-8 md:mt-0">
         Hello, We're
         <br />
-        <span className="px-1 font-[K2D]" > HeyDucks Team</span>
+        <span className="px-1 font-[K2D]"> HeyDucks Team</span>
       </h1>
       <motion.p
         className="text-lg text-gray-200 mt-4 font-[K2D]"
@@ -32,7 +32,7 @@ function About(props) {
           delay: 1.5,
         }}
       >
-        We specialize in creating 3D visuals, 
+        We specialize in creating 3D visuals,
         <br />
         designing user interfaces, and developing web applications.
       </motion.p>
@@ -57,39 +57,39 @@ function About(props) {
     </div>
   );
 }
-function Model3D(){
+function Model3D() {
   return (
     <Canvas style={{ height: "100%" }}>
-        {/* <color attach="background" args={["#E87339"]} /> */}
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[5, 5, 5]} intensity={3} />
-        <motion.group
-          rotation={[0.4, -Math.PI / 3, 0.1]}
-          scale={0.4}
-          position={[2.25, -0.5, 0]}
-        >
-          <Model />
-        </motion.group>
-        <OrbitControls minDistance={2} maxDistance={10} />
-      </Canvas>
+      {/* <color attach="background" args={["#E87339"]} /> */}
+      <ambientLight intensity={0.5} />
+      <directionalLight position={[5, 5, 5]} intensity={3} />
+      <motion.group
+        rotation={[0.4, -Math.PI / 3, 0.1]}
+        scale={0.4}
+        position={[2.25, -0.5, 0]}
+      >
+        <Model />
+      </motion.group>
+      <OrbitControls minDistance={2} maxDistance={10} />
+    </Canvas>
   );
 }
 
-function Avatar3D(){
+function Avatar3D() {
   return (
     <Canvas style={{ height: "100%" }}>
-        {/* <color attach="background" args={["#E87339"]} /> */}
-        <ambientLight intensity={1} />
-        <directionalLight position={[5, 5, 5]} intensity={3} />
-        <motion.group
-          rotation={[0.3, -Math.PI / 5, 0.1]}
-          scale={2}
-          position={[2, -2, 1]}
-        >
-          <Avatar />
-        </motion.group>
-        <OrbitControls minDistance={2} maxDistance={10} />
-      </Canvas>
+      {/* <color attach="background" args={["#E87339"]} /> */}
+      <ambientLight intensity={1} />
+      <directionalLight position={[5, 5, 5]} intensity={3} />
+      <motion.group
+        rotation={[0.3, -Math.PI / 5, 0.1]}
+        scale={2}
+        position={[2, -2, 1]}
+      >
+        <Avatar />
+      </motion.group>
+      <OrbitControls minDistance={2} maxDistance={10} />
+    </Canvas>
   );
 }
 
@@ -99,7 +99,7 @@ function App() {
       <About />
       {/* <Model3D /> */}
       <Avatar3D />
-      <NavigationBar/>
+      <NavigationBar />
       <div className="gradient-background absolute inset-0 z-[-1]">
         <div className="gradients-container">
           <div className="g1"></div>

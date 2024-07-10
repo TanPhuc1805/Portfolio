@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import './NavigationBar.css'
+import React, { useState } from "react";
+import "./NavigationBar.css";
 
 const NavigationBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,18 +14,16 @@ const NavigationBar = () => {
         className="fixed rounded-md focus:outline-none "
         onClick={toggleNavbar}
       >
-  
         <img
           src="../src/assets/images/list.png"
           alt="Button Image"
           className={`h-8 w-8 transition-transform duration-300 ${
-            isOpen ? 'transform rotate-90' : ''
+            isOpen ? "transform rotate-90" : ""
           }`}
         />
-        
       </button>
 
-      <nav className={`${isOpen ? 'active' : ''}`}>
+      <nav className={`${isOpen ? "active" : ""}`}>
         <ul>
           <li>
             <a href="#">About</a>
