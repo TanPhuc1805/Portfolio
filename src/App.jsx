@@ -1,4 +1,5 @@
 import { Model } from "./components/Model/Scene";
+import { Avatar } from "./components/Model/Avatar";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { motion } from "framer-motion-3d";
@@ -74,12 +75,30 @@ function Model3D(){
   );
 }
 
+function Avatar3D(){
+  return (
+    <Canvas style={{ height: "100%" }}>
+        {/* <color attach="background" args={["#E87339"]} /> */}
+        <ambientLight intensity={1} />
+        <directionalLight position={[5, 5, 5]} intensity={3} />
+        <motion.group
+          rotation={[0.3, -Math.PI / 5, 0.1]}
+          scale={2}
+          position={[2, -2, 1]}
+        >
+          <Avatar />
+        </motion.group>
+        <OrbitControls minDistance={2} maxDistance={10} />
+      </Canvas>
+  );
+}
 
 function App() {
   return (
     <div className="relative h-screen">
       <About />
-      <Model3D />
+      {/* <Model3D /> */}
+      <Avatar3D />
       <NavigationBar/>
       <div className="gradient-background absolute inset-0 z-[-1]">
         <div className="gradients-container">
