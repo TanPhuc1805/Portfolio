@@ -1,11 +1,11 @@
-import { Model } from "./Scene";
+import { Model } from "./components/Model/Scene";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import { motion } from "framer-motion-3d";
 import React from "react";
 import "./App.css";
-import "./NavigationBar"
-import NavigationBar from "./NavigationBar";
+import "./components/NavigationBar/NavigationBar"
+import NavigationBar from "./components/NavigationBar/NavigationBar";
 
 function About(props) {
   const { setSection } = props;
