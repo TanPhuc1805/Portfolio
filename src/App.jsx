@@ -34,11 +34,36 @@ function Model3D() {
   );
 }
 
+function Avatar3D() {
+  return (
+    <Canvas style={{ height: "100%" }}>
+      {/* <color attach="background" args={["#E87339"]} /> */}
+      <ambientLight intensity={1} />
+      <directionalLight position={[5, 5, 5]} intensity={3} />
+      <ScrollControls pages={7} damping={0.1}>
+      <motion.group
+        rotation={[0.3, -Math.PI / 5, 0.1]}
+        scale={2}
+        position={[2, -1, 1]}
+      >
+        <Avatar />
+      </motion.group>
+      <Scroll html>
+            {/* <About /> */}
+            <Interface />
+          </Scroll>
+        </ScrollControls>
+      {/* <OrbitControls minDistance={2} maxDistance={10} /> */}
+    </Canvas>
+  );
+}
+
 function App() {
   return (
     <div className="relative h-screen">
-      {/* <About /> */}
-      <Model3D />
+      
+      {/* <Model3D /> */}
+      <Avatar3D/>
       <NavigationBar />
       <div className="gradient-background absolute inset-0 z-[-1]">
         <div className="gradients-container">
