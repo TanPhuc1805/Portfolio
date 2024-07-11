@@ -5,23 +5,56 @@ Command: npx gltfjsx@6.2.18 668e7776f2eb29b0c8d9026f.glb
 
 import React, { useEffect, useRef } from 'react'
 import { useAnimations, useFBX, useGLTF } from '@react-three/drei'
+import { useFrame } from '@react-three/fiber';
+import { useControls } from 'leva';
+import * as THREE from "three"
 
 export function Avatar(props) {
+
+  const{animation}=props;
+  const {headFollow, cursorFollow} = useControls({
+    headFollow:false,
+    cursorFollow:false,
+  })
+
   const group =useRef();
   const { nodes, materials } = useGLTF('/668e7776f2eb29b0c8d9026f.glb');
 
   const {animations : typingAnimation} = useFBX("animations/Typing.fbx");
+  const {animations : standingAnimation} = useFBX("animations/Standing Idle.fbx");
+  const {animations : fallingAnimation} = useFBX("animations/Falling Idle.fbx");
 
   typingAnimation[0].name="Typing";
+  standingAnimation[0].name="Standing";
+  fallingAnimation[0].name="Falling";
 
-  const {actions} = useAnimations(typingAnimation,group);
+
+  const {actions} = useAnimations([typingAnimation[0],standingAnimation[0],fallingAnimation[0]],group);
+
+  useFrame((state)=>{
+    if(headFollow){
+    group.current.getObjectByName("Head").lookAt(state.camera.position);
+    }
+    if(cursorFollow)
+    {
+      const target =new THREE.Vector3(state.mouse.x,state.mouse.y, 4);
+      group.current.getObjectByName("Spine2").lookAt(target);
+    }
+  });
 
   useEffect(() => {
-    actions["Typing"].reset().play();
-  },[]);
+    // actions[animation].reset().fadeIn(0.5).play();
+    actions[animation].reset().play();
+    return ()=> {
+      // actions[animation].reset().fadeOut(0.5);
+      actions[animation].reset().stop();
+    }
+  },[animation]);
 
   return (
+    
     <group {...props} ref={group} dispose={null}>
+      <group rotation-x={-Math.PI / 2}>
       <primitive object={nodes.Hips} />
       <skinnedMesh geometry={nodes.Wolf3D_Hair.geometry} material={materials.Wolf3D_Hair} skeleton={nodes.Wolf3D_Hair.skeleton} />
       <skinnedMesh geometry={nodes.Wolf3D_Glasses.geometry} material={materials.Wolf3D_Glasses} skeleton={nodes.Wolf3D_Glasses.skeleton} />
@@ -33,6 +66,7 @@ export function Avatar(props) {
       <skinnedMesh name="EyeRight" geometry={nodes.EyeRight.geometry} material={materials.Wolf3D_Eye} skeleton={nodes.EyeRight.skeleton} morphTargetDictionary={nodes.EyeRight.morphTargetDictionary} morphTargetInfluences={nodes.EyeRight.morphTargetInfluences} />
       <skinnedMesh name="Wolf3D_Head" geometry={nodes.Wolf3D_Head.geometry} material={materials.Wolf3D_Skin} skeleton={nodes.Wolf3D_Head.skeleton} morphTargetDictionary={nodes.Wolf3D_Head.morphTargetDictionary} morphTargetInfluences={nodes.Wolf3D_Head.morphTargetInfluences} />
       <skinnedMesh name="Wolf3D_Teeth" geometry={nodes.Wolf3D_Teeth.geometry} material={materials.Wolf3D_Teeth} skeleton={nodes.Wolf3D_Teeth.skeleton} morphTargetDictionary={nodes.Wolf3D_Teeth.morphTargetDictionary} morphTargetInfluences={nodes.Wolf3D_Teeth.morphTargetInfluences} />
+    </group>
     </group>
   )
 }
