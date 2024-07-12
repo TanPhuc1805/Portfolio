@@ -1,4 +1,4 @@
-import { Model } from "./components/Model/Scene";
+import { Model } from "./components/Model/NewScene";
 import { Avatar } from "./components/Model/Avatar";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Scroll, ScrollControls } from "@react-three/drei";
@@ -11,6 +11,12 @@ import { Interface } from "./components/ScrollItem/Interface";
 import { useControls } from "leva";
 
 function Model3D() {
+  const {animation} =useControls({
+    animation:{
+      value:"Typing",
+      options:["Typing","Standing","Falling"]
+    },
+  });
   return (
     <>
       <Canvas style={{ height: "100%" }}>
@@ -18,11 +24,14 @@ function Model3D() {
         <directionalLight position={[5, 5, 5]} intensity={10} />
         <ScrollControls pages={7} damping={0.1}>
           <motion.group
-            rotation={[0.4, -Math.PI / 3, 0.1]}
-            scale={0.4}
-            position={[1.25, -0.5, 0]}
+            rotation={[0.4, -Math.PI / 5, 0.1]}
+            scale={0.5}
+            position={[1.5, -0.5, 0]}
           >
             <Model />
+            <group name="CharacterSpot" position={[-1.52, -0.04, -1.22]} rotation={[0, -Math.PI / 2, 0]} scale={2}>
+            <Avatar animation={animation} />
+            </group>
           </motion.group>
           <Scroll html>
             {/* <About /> */}
@@ -67,7 +76,7 @@ function App() {
   return (
     <div className="relative h-screen">
       
-      <Model3D /> 
+      <Model3D />
       {/* <Avatar3D/> */}
       <NavigationBar />
       <div className="gradient-background absolute inset-0 z-[-1]">
