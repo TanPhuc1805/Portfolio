@@ -67,7 +67,7 @@ const AboutSection = () => {
           designing user interfaces, and developing web applications.
         </p>
         <button
-          className={`bg-indigo-600 text-white py-4 px-8 rounded-lg font-bold text-lg mt-16`}
+          className={`bg-blue-500 text-white py-4 px-8 rounded-lg font-bold text-lg mt-16`}
         >
           Contact us
         </button>
@@ -99,7 +99,9 @@ const SkillSection = () => {
           })}
         </div>
 
-        <h2 className="text-5xl font-bold font-[K2D] mt-20 text-gray-200">Languages</h2>
+        <h2 className="text-5xl font-bold font-[K2D] mt-20 text-gray-200">
+          Languages
+        </h2>
         <div className="mt-8 space-y-4">
           {languages.map((skill, index) => {
             return (
@@ -122,22 +124,81 @@ const SkillSection = () => {
   );
 };
 
+const ContactSession = () => {
+  return [
+    <Section>
+      <h2 className="text-5xl font-bold">Contact me</h2>
+      <div className="mt-8 p-8 rounded-md bg-white w-96 max-w-full">
+        <form>
+          <label for="name" className="font-medium text-gray-900 block mb-1">
+            Name
+          </label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            className="block w-full rounded-md border-0 text-gray-900 shadow-sm"
+            placeholder="Enter your name here..."
+          />
+
+          <label
+            for="email"
+            className="font-medium text-gray-900 block mb-1 mt-5"
+          >
+            Email
+          </label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            className="block w-full rounded-md border-0 text-gray-900 shadow-sm"
+            placeholder="Enter your email here..."
+          />
+
+          <label
+            for="phoneNumber"
+            className="font-medium text-gray-900 block mb-1 mt-5"
+          >
+            Phone number
+          </label>
+          <input
+            type="tel"
+            name="phoneNumber"
+            id="phoneNumber"
+            className="block w-full rounded-md border-0 text-gray-900 shadow-sm"
+            placeholder="Enter your phone number here..."
+          />
+
+          <label
+            for="message"
+            className="font-medium text-gray-900 block mb-1 mt-5"
+          >
+            Message
+          </label>
+          <textarea
+            name="message"
+            id="message"
+            className="block w-full rounded-md border-0 text-gray-900 shadow-sm"
+            placeholder="Enter your message here..."
+          />
+
+          <input type="submit" value="Send" className="w-full bg-blue-500 text-white py-2 px-8 rounded-lg font-bold text-lg mt-5"/>
+        </form>
+      </div>
+    </Section>,
+  ];
+};
+
 export const Interface = () => {
   return (
     <>
-      <div className="">
-        <Section>
-          <AboutSection />
-        </Section>
-        <Section>
-          <SkillSection />
-        </Section>
+      <div>
+        <AboutSection />
+        <SkillSection />
         <Section>
           <h1>Projects</h1>
         </Section>
-        <Section>
-          <h1>Contact</h1>
-        </Section>
+        <ContactSession />
       </div>
     </>
   );
