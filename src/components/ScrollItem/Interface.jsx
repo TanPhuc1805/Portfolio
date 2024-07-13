@@ -8,13 +8,15 @@ import PrivacyTipIcon from "@mui/icons-material/PrivacyTip";
 import PersonIcon from "@mui/icons-material/Person";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import PhoneIcon from "@mui/icons-material/Phone";
-import Snackbar from '@mui/joy/Snackbar';
-import NorthWestIcon from '@mui/icons-material/NorthWest';
-import NorthEastIcon from '@mui/icons-material/NorthEast';
-import NorthIcon from '@mui/icons-material/North';
-import SouthIcon from '@mui/icons-material/South';
-import SouthEastIcon from '@mui/icons-material/SouthEast';
-import SouthWestIcon from '@mui/icons-material/SouthWest';
+import Snackbar from "@mui/joy/Snackbar";
+import NorthWestIcon from "@mui/icons-material/NorthWest";
+import NorthEastIcon from "@mui/icons-material/NorthEast";
+import NorthIcon from "@mui/icons-material/North";
+import SouthIcon from "@mui/icons-material/South";
+import SouthEastIcon from "@mui/icons-material/SouthEast";
+import SouthWestIcon from "@mui/icons-material/SouthWest";
+import { motion } from "framer-motion";
+import { duration } from "@mui/material";
 
 const validateEmail = (email) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -67,9 +69,20 @@ const Section = (props) => {
   const { children } = props;
 
   return (
-    <section className="h-screen w-screen p-8 max-w-screen-2xl flex flex-col items-start justify-center">
+    <motion.section
+      className="h-screen w-screen p-8 max-w-screen-2xl flex flex-col items-start justify-center"
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        transition: {
+          duration: 1,
+          delay: 0.6,
+        },
+      }}
+    >
       {children}
-    </section>
+    </motion.section>
   );
 };
 
@@ -82,16 +95,24 @@ const AboutSection = () => {
           <br />
           <span className="px-1 font-[K2D]">HeyDucks Team</span>
         </h1>
-        <p className="text-lg text-gray-200 mt-4 font-[K2D]">
+        <motion.p
+          className="text-lg text-gray-200 mt-4 font-[K2D]"
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1 }}
+        >
           We specialize in creating 3D visuals,
           <br />
           designing user interfaces, and developing web applications.
-        </p>
-        <button
+        </motion.p>
+        <motion.button
           className={`bg-blue-500 text-white py-4 px-8 rounded-lg font-bold text-lg mt-16`}
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1.5 }}
         >
           Contact us
-        </button>
+        </motion.button>
       </Section>
     </>
   );
@@ -100,19 +121,35 @@ const AboutSection = () => {
 const SkillSection = () => {
   return (
     <Section>
-      <div>
+      <motion.div whileInView={"visible"}>
         <h2 className="text-5xl font-bold font-[K2D] text-gray-200">Skills</h2>
         <div className="mt-8 space-y-4">
           {skills.map((skill, index) => {
             return (
               <div className="w-64" key={index}>
-                <h3 className="text-xl font-bold text-gray-200 font-[K2D]">
+                <motion.h3
+                  className="text-xl font-bold text-gray-200 font-[K2D]"
+                  initial={{ opacity: 0 }}
+                  variants={{
+                    visible: {
+                      opacity: 1,
+                      transition: { duration: 1, delay: 0.5 + index * 0.2 },
+                    },
+                  }}
+                >
                   {skill.title}
-                </h3>
+                </motion.h3>
                 <div className="h-2 w-full bg-gray-200 rounded-full mt-2">
-                  <div
+                  <motion.div
                     className="h-full bg-indigo-500 rounded-full"
                     style={{ width: `${skill.level}%` }}
+                    initial={{ scaleX: 0, originX: 0 }}
+                    variants={{
+                      visible: {
+                        scaleX: 1,
+                        transition: { duration: 1, delay: 0.5 + index * 0.2 },
+                      },
+                    }}
                   />
                 </div>
               </div>
@@ -140,7 +177,7 @@ const SkillSection = () => {
             );
           })}
         </div>
-      </div>
+      </motion.div>
     </Section>
   );
 };
