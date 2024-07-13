@@ -46,7 +46,7 @@ const Section = (props) => {
   const { children } = props;
 
   return (
-    <section className="h-screen w-screen p-8 max-w-screen-2xl mx-auto flex flex-col items-start justify-center">
+    <section className="h-screen w-screen p-8 max-w-screen-2xl flex flex-col items-start justify-center">
       {children}
     </section>
   );
@@ -125,7 +125,7 @@ const SkillSection = () => {
 export const Interface = () => {
   return (
     <>
-      <div className="flex flex-col items-center w-screen">
+      <div className="">
         <Section>
           <AboutSection />
         </Section>
