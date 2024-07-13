@@ -8,14 +8,15 @@ import PrivacyTipIcon from "@mui/icons-material/PrivacyTip";
 import PersonIcon from "@mui/icons-material/Person";
 import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import PhoneIcon from "@mui/icons-material/Phone";
-import Snackbar from '@mui/joy/Snackbar';
-import NorthWestIcon from '@mui/icons-material/NorthWest';
-import NorthEastIcon from '@mui/icons-material/NorthEast';
-import NorthIcon from '@mui/icons-material/North';
-import SouthIcon from '@mui/icons-material/South';
-import SouthEastIcon from '@mui/icons-material/SouthEast';
-import SouthWestIcon from '@mui/icons-material/SouthWest';
+import Snackbar from "@mui/joy/Snackbar";
+import NorthWestIcon from "@mui/icons-material/NorthWest";
+import NorthEastIcon from "@mui/icons-material/NorthEast";
+import NorthIcon from "@mui/icons-material/North";
+import SouthIcon from "@mui/icons-material/South";
+import SouthEastIcon from "@mui/icons-material/SouthEast";
+import SouthWestIcon from "@mui/icons-material/SouthWest";
 import { motion } from "framer-motion";
+import { duration } from "@mui/material";
 
 const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
