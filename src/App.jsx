@@ -1,4 +1,3 @@
-import { Model } from "./components/Model/NewScene";
 import { Avatar } from "./components/Model/Avatar";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Scroll, ScrollControls } from "@react-three/drei";
@@ -11,15 +10,13 @@ import { Interface } from "./components/ScrollItem/Interface";
 import { useControls } from "leva";
 import { animate, useMotionValue } from "framer-motion";
 import { useEffect } from "react";
+import { Leva } from "leva";
+import { Experience } from "./components/ScrollItem/Experience";
+import ScrollManager from "./components/NavigationBar/ScrollManager";
 
 function Model3D() {
   const [section, setSection] = useState(0);
-  const { animation } = useControls({
-    animation: {
-      value: "Typing",
-      options: ["Typing", "Standing", "Falling"],
-    },
-  });
+  
 
   const cameraPositionX = useMotionValue();
   const cameraLookAtX = useMotionValue();
@@ -48,7 +45,8 @@ function Model3D() {
         <ambientLight intensity={0.5} />
         <directionalLight position={[5, 5, 5]} intensity={10} />
         <ScrollControls pages={7} damping={0.1}>
-          <motion.group
+          <ScrollManager section={section} onSectionChange={setSection} />
+          {/* <motion.group
             rotation={[0.4, -Math.PI / 5, 0.1]}
             scale={0.5}
             position={[1.5, -0.5, 0]}
@@ -63,14 +61,21 @@ function Model3D() {
             >
               <Avatar animation={animation} />
             </group>
-          </motion.group>
+          </motion.group> */}
+
+          <Scroll>
+            <Experience section={section}/>
+          </Scroll>
+
           <Scroll html>
             {/* <About /> */}
             <Interface />
           </Scroll>
+          
         </ScrollControls>
         {/* <OrbitControls minDistance={2} maxDistance={10} /> */}
       </Canvas>
+      <Leva hidden/>
     </>
   );
 }
