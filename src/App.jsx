@@ -14,6 +14,7 @@ import { Leva } from "leva";
 import { Experience } from "./components/ScrollItem/Experience";
 import ScrollManager from "./components/NavigationBar/ScrollManager";
 import { LoadingScreen } from "./components/LoadingScreen/LoadingScreen";
+import { CursorController } from "./components/CursorController/CursorController";
 
 function Model3D() {
   const [section, setSection] = useState(0);
@@ -124,6 +125,7 @@ function App() {
           <div className="g5"></div>
         </div>
       </div>
+      <CursorController />
     </div>
   );
 }
