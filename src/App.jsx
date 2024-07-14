@@ -9,6 +9,8 @@ import "./components/NavigationBar/NavigationBar";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
 import { Interface } from "./components/ScrollItem/Interface";
 import { useControls } from "leva";
+import { animate, useMotionValue } from "framer-motion";
+import { useEffect } from "react";
 
 function Model3D() {
   const [section, setSection] = useState(0);
@@ -18,6 +20,28 @@ function Model3D() {
       options: ["Typing", "Standing", "Falling"],
     },
   });
+
+  const cameraPositionX = useMotionValue();
+  const cameraLookAtX = useMotionValue();
+
+  useEffect(() => {
+    animate(cameraPositionX, 0, {
+      type: "spring",
+      mass: 5,
+      stiffness: 500,
+      damping: 50,
+      restDelta: 0.01,
+    });
+    // animate(cameraLookAtX, isClickedComputer ? 5 : 0, {
+    //   type: "spring",
+    //   mass: 5,
+    //   stiffness: 500,
+    //   damping: 50,
+    //   restDelta: 0.01,
+    // });
+    // console.log(isClickedComputer);
+  });
+
   return (
     <>
       <Canvas style={{ height: "100%" }}>
@@ -28,6 +52,7 @@ function Model3D() {
             rotation={[0.4, -Math.PI / 5, 0.1]}
             scale={0.5}
             position={[1.5, -0.5, 0]}
+            // animate={{ x: -0.7, y: -1.6, z: 5.8, rotateY: -Math.PI / 2 }}
           >
             <Model />
             <group
