@@ -13,10 +13,11 @@ import { useEffect } from "react";
 import { Leva } from "leva";
 import { Experience } from "./components/ScrollItem/Experience";
 import ScrollManager from "./components/NavigationBar/ScrollManager";
+import { LoadingScreen } from "./components/LoadingScreen/LoadingScreen";
 
 function Model3D() {
   const [section, setSection] = useState(0);
-  
+  const [started, setStarted] = useState(false);  
 
   const cameraPositionX = useMotionValue();
   const cameraLookAtX = useMotionValue();
@@ -41,6 +42,7 @@ function Model3D() {
 
   return (
     <>
+    <LoadingScreen started={started} setStarted={setStarted} />
       <Canvas style={{ height: "100%" }}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[5, 5, 5]} intensity={10} />

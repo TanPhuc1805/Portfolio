@@ -43,9 +43,9 @@ export const Experience = (props) => {
       {/* Home */}
       <ambientLight intensity={1} />
       <motion.group
-        rotation={[0.4, -Math.PI / 5, 0.1]}
-        scale={0.5}
-        position={[1.5, -0.5, 0]}
+        rotation={[0.15, -Math.PI / 3, 0.05]}
+        scale={0.4}
+        position={[2, -0.5, 0]}
         // animate={{ x: -0.7, y: -1.6, z: 5.8, rotateY: -Math.PI / 2 }}
       >
         <Model />
