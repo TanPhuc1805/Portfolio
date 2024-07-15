@@ -9,8 +9,8 @@ import { animate, useMotionValue } from "framer-motion";
 import { useScroll } from "@react-three/drei";
 export const Experience = (props) => {
   // eslint-disable-next-line react/prop-types
-  const {viewport} = useThree();
-  const data = useScroll()
+  const { viewport } = useThree();
+  const data = useScroll();
   const [section, setSection] = useState(0);
   const [characterAnimation, setCharacterAnimation] = useState("Typing");
 
@@ -26,18 +26,18 @@ export const Experience = (props) => {
     const timerId = setTimeout(() => {
       setCharacterAnimation(section === 0 ? "Typing" : "Standing");
     }, 1000);
-    
+
     return () => {
       clearTimeout(timerId);
-    }
-  }, [section])
+    };
+  }, [section]);
 
   useFrame((state) => {
     const curSection = Math.floor(data.scroll.current * data.pages);
     if (curSection != section) {
       setSection(curSection);
     }
-  })
+  });
   return (
     <>
       {/* Home */}
@@ -59,8 +59,21 @@ export const Experience = (props) => {
         </group>
       </motion.group>
 
+      {/* Skills */}
+      <motion.group
+        position={[0, -1.5, -10]}
+        animate={{
+          z: section === 1 ? 0 : -10,
+          y: section === 1 ? -viewport.height : -1.5,
+        }}
+      >
+        <group scale={[2, 2, 2]} position-y={-1.5}>
+          <Avatar animation={section === 0 ? "Falling" : "Standing"} />
+        </group>
+      </motion.group>
+
       {/* Projects */}
-      <ProjectsModel/>
+      <ProjectsModel />
     </>
-  )
+  );
 };
