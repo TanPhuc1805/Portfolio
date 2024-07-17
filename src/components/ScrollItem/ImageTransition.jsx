@@ -1,9 +1,10 @@
-import { useRef, useEffect, useLayoutEffect } from 'react';
+import React, { useRef, useEffect, useLayoutEffect } from 'react';
 import { useTexture } from '@react-three/drei';
 import { useAtom } from 'jotai';
-import { currentProjectAtom, projects } from "./ProjectsSection";
+import { currentProjectAtom, projects } from "./ProjectsModel";
 import { useFrame } from '@react-three/fiber';
 import { gsap } from 'gsap';
+
 
 const ImageTransition = () => {
     const [currentProject] = useAtom(currentProjectAtom);
@@ -39,7 +40,7 @@ const ImageTransition = () => {
                 }
             }, "-=0.25") // Overlap with the previous animation to smooth transitions
             // Animate in the new image
-            .to(mesh.position, { y: -18.3, duration: 0.1, ease: "power2.out" }) // Move to final position
+            .to(mesh.position, { y: -11, duration: 0.1, ease: "power2.out" }) // Move to final position
             .to(mesh.material, { opacity: 1, duration: 0.1 }) // Fade in opacity
             .to(mesh.scale, { x: 1.2, y: 1.2, duration: 0.5 }); // Scale up the new image
     }, [currentProject, texture]);
@@ -51,15 +52,15 @@ const ImageTransition = () => {
     });
 
     return (
-        <mesh position-z={-10} rotation={[-Math.PI / 8, 0, 0]} ref={meshRef}>
-            <planeBufferGeometry attach="geometry" args={[15, 8]} />
-            <meshBasicMaterial
-                attach="material"
-                toneMapped={false}
-                transparent
-                opacity={1}
-            />
-        </mesh>
+            <mesh position-z={-10} rotation={[-0.05, 0, 0]} ref={meshRef}>
+                <planeGeometry attach="geometry" args={[20, 10]} />
+                <meshBasicMaterial
+                    attach="material"
+                    toneMapped={false}
+                    transparent
+                    opacity={1}
+                />
+            </mesh>
     );
 };
 

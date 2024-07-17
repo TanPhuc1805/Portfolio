@@ -8,6 +8,7 @@ import * as THREE  from 'three'
 import { useFrame, useThree } from "@react-three/fiber";
 import { animate, useMotionValue } from "framer-motion";
 import { useScroll } from "@react-three/drei";
+import ImageTransition from "./ImageTransition";
 export const Experience = (props) => {
   // eslint-disable-next-line react/prop-types
   const { viewport } = useThree();
@@ -16,7 +17,7 @@ export const Experience = (props) => {
   const [characterAnimation, setCharacterAnimation] = useState("Standing");
   
   const characterContainerAboutRef = useRef();
-  console.log(section)
+  // console.log(section)
   // const { animation } = useControls({
   //   animation: {
   //     value: "Typing",
@@ -41,9 +42,9 @@ export const Experience = (props) => {
       setSection(curSection);
     }
 
-    const position = new THREE.Vector3();
-    characterContainerAboutRef.current.getWorldPosition(position);
-    console.log([position.x, position.y, position.z])
+    // const position = new THREE.Vector3();
+    // characterContainerAboutRef.current.getWorldPosition(position);
+    // console.log([position.x, position.y, position.z])
 
     // const quaterion = new THREE.Quaternion();
     // characterContainerAboutRef.current.getWorldQuaternion(quaterion);
@@ -52,7 +53,9 @@ export const Experience = (props) => {
   });
   return (
     <>
+
       {/* Home */}
+          { section === 2 && <ImageTransition /> }
       <motion.group
         // [-3.0493116590225755, -0.52287738826479, 3.1127451714945633]
         position={[2.1194001512409018, -0.4308999375992163, -0.7674847133721022]}
@@ -108,9 +111,9 @@ export const Experience = (props) => {
       </motion.group>
 
       {/* Skills */}
-     
-
+      
       {/* Projects */}
+      
       <ProjectsModel />
     </>
   );

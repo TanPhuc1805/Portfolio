@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./NavigationBar.css";
 
+
 const NavigationBar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
   };
@@ -11,14 +11,14 @@ const NavigationBar = () => {
   return (
     <div className="relative">
       <button
-        className="fixed rounded-md focus:outline-none "
+        className="fixed top-8 right-10 z-20 rounded-md focus:outline-none "
         onClick={toggleNavbar}
       >
         <img
           src="../src/assets/images/list.png"
           alt="Button Image"
           className={`h-8 w-8 transition-transform duration-300 ${
-            isOpen ? "transform rotate-90" : ""
+            isOpen ? "transform rotate-90" : "transform -rotate-90"
           }`}
         />
       </button>
@@ -48,6 +48,8 @@ const NavigationBar = () => {
           </li>
         </ul>
       </nav>
+
+      
     </div>
   );
 };

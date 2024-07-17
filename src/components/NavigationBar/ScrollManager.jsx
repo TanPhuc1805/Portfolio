@@ -1,11 +1,13 @@
 import { useScroll } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { gsap } from "gsap";
+import { atom, useAtom } from "jotai";
 import { useEffect, useRef } from "react";
+import { debounce } from "lodash";
 
+export const currentUserSection = atom(0)
 const ScrollManager = (props) => {
-    const { section, onSectionChange } = props;
-
+    const {section, onSectionChange} = props
     const data = useScroll();
     const lastScroll = useRef(0);
     const isAnimating = useRef(false);
@@ -26,15 +28,34 @@ const ScrollManager = (props) => {
         });
     }, [section]);
 
+    const makeSectionChange = () => {
+        // Determine the current section based on scroll progress
+        const totalSections = data.pages;
+        const currentSection = Math.floor(data.scroll.current * totalSections);
+
+        // Check if user scrolls up or down and change section accordingly
+        if (currentSection !== section) {
+            if (data.scroll.current < lastScroll.current) {
+                onSectionChange(Math.max(0, currentSection));
+            } else {
+                onSectionChange(Math.min(totalSections - 1, currentSection));
+            }
+        }
+    }
+    const debouncedChange = debounce((fn) => {
+        fn()
+    }, 300);
+    
     useFrame(() => {
         if (isAnimating.current) {
             lastScroll.current = data.scroll.current;
             return;
         }
-        const curSection = Math.floor(data.scroll.current * data.pages);
-        if (curSection === 1 && data.scroll.current < lastScroll.current ) {
-            onSectionChange(0)
-        } else if (data.scroll.current > lastScroll.current && curSection === 0) {onSectionChange(1);}
+        
+        if (data.scroll.current !== lastScroll.current) {
+            debouncedChange(makeSectionChange)
+        }
+        
         lastScroll.current = data.scroll.current;
     });
 

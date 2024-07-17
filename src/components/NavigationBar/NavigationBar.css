@@ -42,9 +42,3 @@ li a:hover {
   -webkit-text-fill-color: transparent;
 }
 
-.fixed {
-  position: fixed;
-  top: 1.5rem;
-  right: 3rem;
-  z-index: 20;
-}

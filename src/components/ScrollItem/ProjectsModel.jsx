@@ -77,6 +77,7 @@ export const currentProjectAtom = atom(Math.floor(projects.length / 2))
 function Projects() {
     const { viewport } = useThree();
     const [currentProject] = useAtom(currentProjectAtom);
+    console.log("Models",currentProject)
     return (
         <group position-y={-viewport.height * 2.4 + 1}>
             {
