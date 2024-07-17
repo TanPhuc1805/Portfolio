@@ -13,16 +13,16 @@ export const Experience = (props) => {
   const { viewport } = useThree();
   const data = useScroll();
   const [section, setSection] = useState(0);
-  const [characterAnimation, setCharacterAnimation] = useState("Typing");
+  const [characterAnimation, setCharacterAnimation] = useState("Standing");
   
   const characterContainerAboutRef = useRef();
-
-  const { animation } = useControls({
-    animation: {
-      value: "Typing",
-      options: ["Typing", "Standing", "Falling"],
-    },
-  });
+  console.log(section)
+  // const { animation } = useControls({
+  //   animation: {
+  //     value: "Typing",
+  //     options: ["Typing", "Standing", "Falling"],
+  //   },
+  // });
 
   useEffect(() => {
     setCharacterAnimation("Falling");
@@ -41,9 +41,9 @@ export const Experience = (props) => {
       setSection(curSection);
     }
 
-    // const position = new THREE.Vector3();
-    // characterContainerAboutRef.current.getWorldPosition(position);
-    // console.log([position.x, position.y, position.z])
+    const position = new THREE.Vector3();
+    characterContainerAboutRef.current.getWorldPosition(position);
+    console.log([position.x, position.y, position.z])
 
     // const quaterion = new THREE.Quaternion();
     // characterContainerAboutRef.current.getWorldQuaternion(quaterion);
@@ -53,27 +53,6 @@ export const Experience = (props) => {
   return (
     <>
       {/* Home */}
-      <ambientLight intensity={1} />
-      <motion.group
-        rotation={[0.15, -Math.PI / 3, 0.05]}
-        scale={0.4}
-        position={[2, -0.5, 0]}
-        
-        // animate={{ x: -0.7, y: -1.6, z: 5.8, rotateY: -Math.PI / 2 }}
-      >
-        <Model />
-        {/* <group
-          name="CharacterSpot"
-          position={[-1.52, -0.04, -1.22]}
-          rotation={[0, -Math.PI / 2, 0]}
-          scale={2}
-          ref={characterContainerAboutRef}
-        >
-          <Avatar animation={characterAnimation} />
-        </group> */}
-      </motion.group>
-
-      {/* Skills */}
       <motion.group
         // [-3.0493116590225755, -0.52287738826479, 3.1127451714945633]
         position={[2.1194001512409018, -0.4308999375992163, -0.7674847133721022]}
@@ -107,6 +86,29 @@ export const Experience = (props) => {
       >
         <Avatar animation={characterAnimation} />
       </motion.group>
+
+      <ambientLight intensity={1} />
+      <motion.group
+        rotation={[0.15, -Math.PI / 3, 0.05]}
+        scale={0.4}
+        position={[2, -0.5, 0]}
+        
+        // animate={{ x: -0.7, y: -1.6, z: 5.8, rotateY: -Math.PI / 2 }}
+      >
+        <Model />
+        <group
+          name="CharacterSpot"
+          position={[-1.52, -0.04, -1.22]}
+          rotation={[0, -Math.PI / 2, 0]}
+          scale={2}
+          ref={characterContainerAboutRef}
+        >
+          {/* <Avatar animation={"Typing"} /> */}
+        </group>
+      </motion.group>
+
+      {/* Skills */}
+     
 
       {/* Projects */}
       <ProjectsModel />
