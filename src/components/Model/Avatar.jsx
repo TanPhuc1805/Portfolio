@@ -11,13 +11,14 @@ import * as THREE from "three"
 
 export function Avatar(props) {
 
-  const{animation}=props;
-  const {headFollow, cursorFollow} = useControls({
+  const{animation} = props;
+  const {headFollow, cursorFollow, wireframe} = useControls({
     headFollow:false,
     cursorFollow:false,
+    wireframe: false
   })
 
-  const group =useRef();
+  const group = useRef();
   const { nodes, materials } = useGLTF('/668e7776f2eb29b0c8d9026f.glb');
 
   const {animations : typingAnimation} = useFBX("animations/Typing.fbx");
@@ -36,7 +37,7 @@ export function Avatar(props) {
       item.name = item.name.replace('mixamorig', '');
   });
 
-  const {actions} = useAnimations([typingAnimation[0],standingAnimation[0],fallingAnimation[0]],group);
+  const {actions} = useAnimations([typingAnimation[0],standingAnimation[0],fallingAnimation[0]], group);
 
   useFrame((state)=>{
     if(headFollow){
@@ -51,22 +52,21 @@ export function Avatar(props) {
 
   // Perform actions
   useEffect(() => {
-    // transition
-    actions[animation].reset().fadeIn(0.5).play();
-    return () => {
-        actions[animation].reset().fadeOut(0.5).stop();
-    };
-}, [animation]);
+      // transition
+      actions[animation].reset().fadeIn(0.5).play();
+      return () => {
+          actions[animation].reset().fadeOut(0.5).stop();
+      };
+  }, [animation]);
 
-// useEffect(() => {
-//   Object.values(materials).forEach((material) => {
-//       material.wireframe = wireframe
-//   });
-// }, [wireframe]);
+  useEffect(() => {
+    Object.values(materials).forEach((material) => {
+        material.wireframe = wireframe
+    });
+  }, [wireframe]);
   return (
     
-    <group {...props} ref={group} dispose={null}>
-      <group rotation-x={-Math.PI / 2}>
+    <group {...props} ref={group} dispose={null} rotation-x={-Math.PI / 2}>
         <primitive object={nodes.Hips} />
         <skinnedMesh geometry={nodes.Wolf3D_Hair.geometry} material={materials.Wolf3D_Hair} skeleton={nodes.Wolf3D_Hair.skeleton} />
         <skinnedMesh geometry={nodes.Wolf3D_Glasses.geometry} material={materials.Wolf3D_Glasses} skeleton={nodes.Wolf3D_Glasses.skeleton} />
@@ -78,7 +78,6 @@ export function Avatar(props) {
         <skinnedMesh name="EyeRight" geometry={nodes.EyeRight.geometry} material={materials.Wolf3D_Eye} skeleton={nodes.EyeRight.skeleton} morphTargetDictionary={nodes.EyeRight.morphTargetDictionary} morphTargetInfluences={nodes.EyeRight.morphTargetInfluences} />
         <skinnedMesh name="Wolf3D_Head" geometry={nodes.Wolf3D_Head.geometry} material={materials.Wolf3D_Skin} skeleton={nodes.Wolf3D_Head.skeleton} morphTargetDictionary={nodes.Wolf3D_Head.morphTargetDictionary} morphTargetInfluences={nodes.Wolf3D_Head.morphTargetInfluences} />
         <skinnedMesh name="Wolf3D_Teeth" geometry={nodes.Wolf3D_Teeth.geometry} material={materials.Wolf3D_Teeth} skeleton={nodes.Wolf3D_Teeth.skeleton} morphTargetDictionary={nodes.Wolf3D_Teeth.morphTargetDictionary} morphTargetInfluences={nodes.Wolf3D_Teeth.morphTargetInfluences} />
-      </group>
     </group>
   )
 }

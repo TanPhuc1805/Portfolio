@@ -67,7 +67,7 @@ function Model3D() {
           </motion.group> */}
 
           <Scroll>
-            <Experience section={section}/>
+            <Experience/>
           </Scroll>
 
           <Scroll html>

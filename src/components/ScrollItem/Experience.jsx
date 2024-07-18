@@ -14,7 +14,8 @@ export const Experience = (props) => {
   const { viewport } = useThree();
   const data = useScroll();
   const [section, setSection] = useState(0);
-  const [characterAnimation, setCharacterAnimation] = useState("Standing");
+  const [characterAnimation, setCharacterAnimation] = useState("Typing");
+  
   
   const characterContainerAboutRef = useRef();
   // console.log(section)
@@ -29,7 +30,7 @@ export const Experience = (props) => {
     setCharacterAnimation("Falling");
     const timerId = setTimeout(() => {
       setCharacterAnimation(section === 0 ? "Typing" : "Standing");
-    }, 1000);
+    }, 1500);
 
     return () => {
       clearTimeout(timerId);
@@ -55,10 +56,10 @@ export const Experience = (props) => {
     <>
 
       {/* Home */}
-          { section === 2 && <ImageTransition /> }
+      { section === 2 && <ImageTransition /> }
       <motion.group
         // [-3.0493116590225755, -0.52287738826479, 3.1127451714945633]
-        position={[2.1194001512409018, -0.4308999375992163, -0.7674847133721022]}
+        position={[2.0194001512409018, -0.5008999375992163, -0.7674847133721022]}
         rotation={[-3.0493116590225755, -0.52287738826479, 3.1127451714945633]}
         // animate={{
         //   z: section === 1 ? 0 : -10,

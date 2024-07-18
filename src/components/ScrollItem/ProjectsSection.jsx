@@ -6,7 +6,6 @@ import { currentProjectAtom, projects } from "./ProjectsModel";
 export const ProjectsSection = () => {
     const [currentProject, setCurrentProject] = useAtom(currentProjectAtom);
 
-    console.log("Section",currentProject)
     const nextProject = () => {
         setCurrentProject((currentProject + 1) % projects.length);
     };
