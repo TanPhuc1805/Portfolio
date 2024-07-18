@@ -99,7 +99,7 @@ export const Experience = (props) => {
         
         // animate={{ x: -0.7, y: -1.6, z: 5.8, rotateY: -Math.PI / 2 }}
       >
-        <Model />
+        <Model cameraPosition={new THREE.Vector3(0, 0, 5)} cameraRotation={new THREE.Euler(0, 0, 0)} />
         <group
           name="CharacterSpot"
           position={[-1.52, -0.04, -1.22]}

@@ -43,11 +43,12 @@ function Model3D() {
 
   return (
     <>
-    <LoadingScreen started={started} setStarted={setStarted} />
-      <Canvas style={{ height: "100%" }}>
+    {/* <LoadingScreen started={started} setStarted={setStarted} /> */}
+      <Canvas style={{ height: "100%" }} >
         <ambientLight intensity={0.5} />
         <directionalLight position={[5, 5, 5]} intensity={10} />
         <ScrollControls pages={7} damping={0.1}>
+          
           <ScrollManager section={section} onSectionChange={setSection} />
           {/* <motion.group
             rotation={[0.4, -Math.PI / 5, 0.1]}
