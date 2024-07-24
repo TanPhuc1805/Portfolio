@@ -17,11 +17,11 @@ nav {
   right: -100%;
   transition: right 1s ease-in-out;
   z-index: 10;
-  font-size: 2.5vh; 
+  font-size: 2.5vh;
 }
 
 nav.active {
-  right: 5rem
+  right: 5rem;
 }
 
 nav ul {
@@ -30,7 +30,6 @@ nav ul {
 }
 
 li a {
-  color: #fff;
   padding: 1rem;
   transition: background-color 0.3s ease-in-out;
   font-family: K2D;
@@ -41,4 +40,3 @@ li a:hover {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-

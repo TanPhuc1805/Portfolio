@@ -1,12 +1,43 @@
 import React, { useState } from "react";
 import "./NavigationBar.css";
 
-
 const NavigationBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
   };
+  const [active, setActive] = useState("");
+  const [toggle, setToggle] = useState(false);
+  const navLinks = [
+    {
+      id: "about",
+      title: "About",
+    },
+    {
+      id: "exp",
+      title: "Experiences",
+    },
+    {
+      id: "project",
+      title: "Project",
+    },
+    {
+      id: "story",
+      title: "Story",
+    },
+    {
+      id: "schedule",
+      title: "Schedule",
+    },
+    {
+      id: "contact",
+      title: "Contact",
+    },
+    {
+      id: "linkedln",
+      title: "Linkedln",
+    },
+  ];
 
   return (
     <div className="relative">
@@ -25,31 +56,19 @@ const NavigationBar = () => {
 
       <nav className={`${isOpen ? "active" : ""}`}>
         <ul>
-          <li>
-            <a href="#">About</a>
-          </li>
-          <li>
-            <a href="#">Experiences</a>
-          </li>
-          <li>
-            <a href="#">Project</a>
-          </li>
-          <li>
-            <a href="#">Story</a>
-          </li>
-          <li>
-            <a href="#">Schedule</a>
-          </li>
-          <li>
-            <a href="#">Contact</a>
-          </li>
-          <li>
-            <a href="#">LinkedIn</a>
-          </li>
+          {navLinks.map((link) => (
+            <li
+              key={link.id}
+              className={`${
+                active === link.title ? "text-violet-500" : "text-white"
+              } hover:cursor-pointer`}
+              onClick={() => setActive(link.title)}
+            >
+              <a href={`#${link.id}`}>{link.title}</a>
+            </li>
+          ))}
         </ul>
       </nav>
-
-      
     </div>
   );
 };
