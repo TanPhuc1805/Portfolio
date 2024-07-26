@@ -15,6 +15,7 @@ import { Experience } from "./components/ScrollItem/Experience";
 import ScrollManager from "./components/NavigationBar/ScrollManager";
 import { LoadingScreen } from "./components/LoadingScreen/LoadingScreen";
 import { CursorController } from "./components/CursorController/CursorController";
+import Background from "./components/Background/Background"
 
 function Model3D() {
   const [section, setSection] = useState(0);
@@ -84,48 +85,14 @@ function Model3D() {
   );
 }
 
-function Avatar3D() {
-  const { animation } = useControls({
-    animation: {
-      value: "Typing",
-      options: ["Typing", "Standing", "Falling"],
-    },
-  });
 
-  return (
-    <Canvas style={{ height: "100%" }}>
-      {/* <color attach="background" args={["#E87339"]} /> */}
-      <ambientLight intensity={1} />
-      <directionalLight position={[5, 5, 5]} intensity={3} />
-
-      <motion.group
-        rotation={[0.3, -Math.PI / 5, 0.1]}
-        scale={2}
-        position={[2, -1.5, 1]}
-      >
-        <Avatar animation={animation} />
-      </motion.group>
-
-      <OrbitControls minDistance={2} maxDistance={10} />
-    </Canvas>
-  );
-}
 
 function App() {
   return (
     <div className="relative h-screen">
       <Model3D />
-      {/* <Avatar3D/> */}
       <NavigationBar />
-      <div className="gradient-background absolute inset-0 z-[-1]">
-        <div className="gradients-container">
-          <div className="g1"></div>
-          <div className="g2"></div>
-          <div className="g3"></div>
-          <div className="g4"></div>
-          <div className="g5"></div>
-        </div>
-      </div>
+      <Background />
       <CursorController />
     </div>
   );
