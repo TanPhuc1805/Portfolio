@@ -16,6 +16,7 @@ import { LoadingScreen } from "./components/LoadingScreen/LoadingScreen";
 import { CursorController } from "./components/CursorController/CursorController";
 import Background from "./components/Background/Background"
 
+
 function Model3D() {
   const [section, setSection] = useState(0);
   const [started, setStarted] = useState(false);  

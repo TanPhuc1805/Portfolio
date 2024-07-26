@@ -9,6 +9,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { animate, useMotionValue } from "framer-motion";
 import { useScroll } from "@react-three/drei";
 import ImageTransition from "./ImageTransition";
+
 export const Experience = (props) => {
   // eslint-disable-next-line react/prop-types
   const { viewport } = useThree();
