@@ -3,7 +3,6 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Scroll, ScrollControls } from "@react-three/drei";
 import { motion } from "framer-motion-3d";
 import React, { useState } from "react";
-import "./App.css";
 import "./components/NavigationBar/NavigationBar";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
 import { Interface } from "./components/ScrollItem/Interface";
