@@ -20,13 +20,12 @@ export const BlogSection = () => {
         >
           <div className="flex justify-around w-full">
             <img
-              className="w-12 h-12 rounded-full mt-1 ms-14"
+              className="w-12 h-12 rounded-full mt-1 ms-14 me-8"
               src="/Images/avatar.jpg"
               alt="Rounded avatar"
             />
 
-            <div className="w-1/12" />
-            <div className="flex flex-row items-center w-1/2">
+            <div className="flex flex-row items-center w-8/12 cursor-pointer">
               <h1
                 className={`
                                 w-11/12
