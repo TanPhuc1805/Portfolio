@@ -1,20 +1,31 @@
 import { Model } from "../Model/NewScene";
 import { Avatar } from "../Model/Avatar";
 import { motion } from "framer-motion-3d";
+import { useControls } from "leva";
 import ProjectsModel from "./ProjectsModel";
 import React, { useEffect, useState, useRef } from "react";
-import * as THREE from 'three'
+import * as THREE  from 'three'
 import { useFrame, useThree } from "@react-three/fiber";
+import { animate, useMotionValue } from "framer-motion";
 import { useScroll } from "@react-three/drei";
 import ImageTransition from "./ImageTransition";
 
-export const Experience = () => {
+export const Experience = (props) => {
   // eslint-disable-next-line react/prop-types
   const { viewport } = useThree();
   const data = useScroll();
   const [section, setSection] = useState(0);
   const [characterAnimation, setCharacterAnimation] = useState("Typing");
+  
+  
   const characterContainerAboutRef = useRef();
+  // console.log(section)
+  // const { animation } = useControls({
+  //   animation: {
+  //     value: "Typing",
+  //     options: ["Typing", "Standing", "Falling"],
+  //   },
+  // });
 
   useEffect(() => {
     setCharacterAnimation("Falling");
@@ -27,7 +38,7 @@ export const Experience = () => {
     };
   }, [section]);
 
-  useFrame(() => {
+  useFrame((state) => {
     const curSection = Math.floor(data.scroll.current * data.pages);
     if (curSection != section) {
       setSection(curSection);
@@ -46,7 +57,7 @@ export const Experience = () => {
     <>
 
       {/* Home */}
-      {section === 2 && <ImageTransition />}
+      { section === 2 && <ImageTransition /> }
       <motion.group
         // [-3.0493116590225755, -0.52287738826479, 3.1127451714945633]
         position={[2.0194001512409018, -0.5008999375992163, -0.7674847133721022]}
@@ -86,8 +97,8 @@ export const Experience = () => {
         rotation={[0.15, -Math.PI / 3, 0.05]}
         scale={0.4}
         position={[2, -0.5, 0]}
-
-      // animate={{ x: -0.7, y: -1.6, z: 5.8, rotateY: -Math.PI / 2 }}
+        
+        // animate={{ x: -0.7, y: -1.6, z: 5.8, rotateY: -Math.PI / 2 }}
       >
         <Model cameraPosition={new THREE.Vector3(0, 0, 5)} cameraRotation={new THREE.Euler(0, 0, 0)} />
         <group
@@ -102,9 +113,9 @@ export const Experience = () => {
       </motion.group>
 
       {/* Skills */}
-
+      
       {/* Projects */}
-
+      
       <ProjectsModel />
     </>
   );

@@ -6,11 +6,13 @@ export default {
   ],
   theme: {
     extend: {
-      newBlog: {
-
+      colors: {
+        'avatar-border': "#4A82E9"
       }
-    },
+    }
   },
-  plugins: [],
+  plugins: [
+    require('daisyui'),
+  ],
 }
 

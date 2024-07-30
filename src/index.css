@@ -14,6 +14,24 @@
 }
 }
 
+@layer utilities {
+  .blog_bar {
+    align-items: center;
+    overflow: hidden;
+    background-size: 300% 300%;
+    backdrop-filter: blur(1rem);
+    transition: 0.5s;
+    animation: gradient_301 5s ease infinite;
+    border-radius: 4em;
+    line-height: 1.75em;
+    border:  solid 1px transparent;
+    background-image: linear-gradient(#ffffff, #ffffff),  linear-gradient(137.48deg, #FF5F5F 10%,#00AB75 45%, #85B6FF 67%, #0044ff 87%);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    transform: scale(1.1)
+  }
+}
+
 body {
   width: 100vw;
   height: 100vh;
@@ -22,4 +40,18 @@ body {
 #root {
   width: 100vw;
   height: 100vh;
+}
+
+@keyframes gradient_301 {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
