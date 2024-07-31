@@ -32,6 +32,16 @@
   }
 }
 
+.hover-color-change img {
+  transition: filter 0.5s ease;
+}
+
+.hover-color-change:hover img {
+  filter: brightness(0) invert(1);
+}
+
+
+
 body {
   width: 100vw;
   height: 100vh;

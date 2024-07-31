@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { FaExclamationTriangle } from 'react-icons/fa';
 
 const WarningModal = (props) => {
-    const {toggleModal} = props
+    const {toggleModal, errorField} = props
 
     return (
         <motion.div
@@ -48,9 +48,11 @@ const WarningModal = (props) => {
                         </button>
                     </div>
                     <div className="p-4 flex flex-col items-center justify-center">
-                        <FaExclamationTriangle className="text-yellow-500 w-12 h-12 mb-4" />
+                        <FaExclamationTriangle 
+                        className={`${errorField === "Category" ? "text-yellow-500" : "text-red-500"} w-12 h-12 mb-4`} />
                         <p className="text-lg text-gray-800 dark:text-white font-semibold">
-                            Don't forget to choose your category!
+                            Don't forget to choose your 
+                            <span className={`${errorField === "Category" ? "text-yellow-500" : "text-red-500"}`}> {errorField}!</span>
                         </p>
                     </div>
                 </div>

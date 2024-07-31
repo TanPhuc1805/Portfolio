@@ -8,7 +8,7 @@ import { global_data } from '../BlogSection';
 import { generateUUID } from 'three/src/math/MathUtils.js';
 
 function Modal(props) {
-    const { toggleModal, setIsWarningOpen } = props
+    const { toggleModal, setIsWarningOpen, setErrorField } = props
     const contentRef = useRef()
     const titleRef = useRef()
     const [category, setCategory] = useState("Category")
@@ -21,16 +21,19 @@ function Modal(props) {
 
         const date = new Date();
         const formattedDate = formatDate(date);
-        console.log(category)
         let chosen_collection = data.filter((collection) => collection.collection === category)
-        if (chosen_collection && chosen_collection.length > 0) {
+        if ((chosen_collection && chosen_collection.length > 0) && (titleRef.current.value && titleRef.current.value.trim() !== "")) {
             chosen_collection[0].blogs = [
                 ...chosen_collection[0].blogs,
                 { id: generateUUID(),avatar: "/Images/avatar.jpg", name: "Dasteen", date: formattedDate, image: "/Images/BlogArticleImg.png", title: titleRef.current.value, content: contentRef.current.value, }
             ]
             setData(prev => [...prev, chosen_collection])
             toggleModal()
-        } else setIsWarningOpen(true)
+        } else {
+            if (!chosen_collection || chosen_collection.length <= 0) setErrorField("Category")
+                else setErrorField("Title")
+            setIsWarningOpen(true)
+        }
     }
     return (
         <motion.div

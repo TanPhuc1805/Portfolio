@@ -11,10 +11,7 @@ export const Interface = () => {
   return (
     <>
       <div className="flex flex-col items-center w-screen">
-        <AboutSection />
-        <SkillsSection />
-        <ProjectsSection />
-        <ContactSection />
+        
         <BlogSection />
       </div>
     </>

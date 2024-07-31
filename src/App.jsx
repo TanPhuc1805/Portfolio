@@ -48,9 +48,8 @@ function Model3D() {
       <Canvas style={{ height: "100%" }} >
         <ambientLight intensity={0.5} />
         <directionalLight position={[5, 5, 5]} intensity={10} />
-        <ScrollControls pages={7} damping={0.1}>
+        <ScrollControls pages={1} damping={0.1}>
           
-          <ScrollManager section={section} onSectionChange={setSection} />
           {/* <motion.group
             rotation={[0.4, -Math.PI / 5, 0.1]}
             scale={0.5}
@@ -68,9 +67,6 @@ function Model3D() {
             </group>
           </motion.group> */}
 
-          <Scroll>
-            <Experience/>
-          </Scroll>
 
           <Scroll html>
             {/* <About /> */}

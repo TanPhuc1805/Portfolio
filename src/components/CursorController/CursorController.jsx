@@ -38,8 +38,7 @@ export const CursorController = () => {
       const parentTagName = target.parentElement?.tagName.toLowerCase();
 
       if (
-        tagName === "button" ||
-        parentTagName === "button" ||
+        
         tagName === "input" ||
         tagName === "textarea"
       ) {

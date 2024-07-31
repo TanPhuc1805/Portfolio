@@ -20,6 +20,11 @@ export let blog_section_arr = [
         blogs: [
             { id: "1", avatar: "/Images/avatar.jpg", name: "Dasteen", date: "Jan 10, 2022", image: "/Images/BlogArticleImg.png", title: "Grid CSS make your life easier", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringiang ashzznajsjs jncnassaidiadadnad" },
             { id: "2", avatar: "/Images/avatar.jpg", name: "Dasteen", date: "Feb 10, 2023", image: "/Images/BlogArticleImg.png", title: "CSS make your life easier", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringiang ashzznajsjs jncnassaidiadadnad" },
+            { id: "3", avatar: "/Images/avatar.jpg", name: "Dasteen", date: "Jan 10, 2022", image: "/Images/BlogArticleImg.png", title: "Grid CSS make your life easier", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringiang ashzznajsjs jncnassaidiadadnad" },
+            { id: "4", avatar: "/Images/avatar.jpg", name: "Dasteen", date: "Feb 10, 2023", image: "/Images/BlogArticleImg.png", title: "CSS make your life easier", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringiang ashzznajsjs jncnassaidiadadnad" },
+            { id: "5", avatar: "/Images/avatar.jpg", name: "Dasteen", date: "Jan 10, 2022", image: "/Images/BlogArticleImg.png", title: "Grid CSS make your life easier", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringiang ashzznajsjs jncnassaidiadadnad" },
+            { id: "6", avatar: "/Images/avatar.jpg", name: "Dasteen", date: "Feb 10, 2023", image: "/Images/BlogArticleImg.png", title: "CSS make your life easier", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringiang ashzznajsjs jncnassaidiadadnad" },
+            { id: "7", avatar: "/Images/avatar.jpg", name: "Dasteen", date: "Jan 10, 2022", image: "/Images/BlogArticleImg.png", title: "Grid CSS make your life easier", content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fringiang ashzznajsjs jncnassaidiadadnad" },
         ]
     }
 ]
@@ -28,6 +33,7 @@ export const global_data = atom(blog_section_arr)
 export const BlogSection = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isWarningOpen, setIsWarningOpen] = useState(false);
+    const [errorField, setErrorField] = useState("")
     const toggleBlogModal = () => {
         setIsModalOpen(!isModalOpen);
     };
@@ -86,30 +92,50 @@ export const BlogSection = () => {
 
                         <div className="h-5/6 mt-1 me-1 w-0.5 bg-gray-300"></div>
                         <div className="flex flex-row justify-around w-2/5">
-                            <div className="flex flex-row items-center ">
+                            <button 
+                                className={`
+                                    hover-color-change
+                                    text-[#FF0000] relative rounded-lg isolation-auto z-0 before:absolute before:w-full duration-500 before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-lg before:bg-[#FF0000] before:z-0 before:aspect-square before:hover:scale-150 overflow-hidden before:hover:duration-700 inline-flex items-center justify-center text-sm font-semibold hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none hover:text-white
+                                    hover:p-2
+                                `}>
                                 <img
-                                    className="me-2"
+                                    className="me-2 z-10"
                                     src="/Images/video.png"
                                     alt="Video"
                                 />
-                                <p className="text-[#FF0000] font-medium text-2xl">Video</p>
-                            </div>
-                            <div className="flex flex-row items-center ">
+                                <p className="font-medium text-2xl z-10">Video</p>
+                            </button>
+
+                            <button 
+                                className={`
+                                    hover-color-change
+                                    text-[#00AB75] relative rounded-lg isolation-auto z-0 before:absolute before:w-full duration-500 before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-lg before:bg-[#00AB75] before:z-[-1] before:aspect-square before:hover:scale-150 overflow-hidden before:hover:duration-700 inline-flex items-center justify-center text-sm font-semibold hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none hover:text-white
+                                    hover:p-2
+                                `}
+                                >
                                 <img
-                                    className="mx-2"
+                                    className="mx-2 z-10"
                                     src="/Images/photo.png"
                                     alt="Photo"
                                 />
-                                <p className="text-[#00AB75] font-medium text-2xl">Photo</p>
-                            </div>
-                            <div className="flex flex-row items-center ">
+                                <p className="font-medium text-2xl z-10">Photo</p>
+                            </button>
+
+                            <button 
+                                className={`
+                                    hover-color-change
+                                    text-[#4A82E9] relative rounded-lg isolation-auto z-0 before:absolute before:w-full duration-500 before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-lg before:bg-[#4A82E9] before:z-[-1] before:aspect-square before:hover:scale-150 overflow-hidden before:hover:duration-700 inline-flex items-center justify-center text-sm font-semibold hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none hover:text-white
+                                    hover:p-2
+                                `}
+                                >
                                 <img
-                                    className="mx-2"
+                                    className="mx-2 z-10"
                                     src="/Images/docs.png"
                                     alt="Document"
                                 />
-                                <p className="text-[#4A82E9] font-medium text-2xl">Document</p>
-                            </div>
+                                <p className="font-medium text-2xl z-10">Document</p>
+                            </button>
+
                         </div>
                     </div>
 
@@ -126,11 +152,15 @@ export const BlogSection = () => {
                     </div>
 
                     <AnimatePresence>
-                        {isModalOpen && <Modal key="blogModal" toggleModal={toggleBlogModal} setIsWarningOpen={setIsWarningOpen} />}
+                        {isModalOpen && <Modal key="blogModal" toggleModal={toggleBlogModal} setIsWarningOpen={setIsWarningOpen} setErrorField={setErrorField}/>}
 
-                        {isWarningOpen && <WarningModal key="warningModal" toggleModal={toggleWarningModal} />}
+                        {isWarningOpen && <WarningModal key="warningModal" toggleModal={toggleWarningModal} errorField={errorField}/>}
                     </AnimatePresence>
                 </div>
+            </div>
+
+            <div className="mt-5 w-full flex justify-center">
+                <img src="/scroll_icon.svg" alt="Scroll Icon" className="w-10 h-10"/>
             </div>
         </Section>
     );
@@ -345,7 +375,7 @@ export const Blogs = (props) => {
                                         containerRef.current.classList.remove("cursor-pointer");
                                         containerRef.current.classList.add("cursor-grab");
                                     }}
-                                    className="w-1/4 flex-shrink-0 max-w-96 min-w-80 mx-1 "
+                                    className="flex-shrink-0 max-w-96 w-80 mx-1 "
                                 >
                                     <Article data={blog} index={index} handleDeleteArticle={handleDeleteArticle}/>
                                 </motion.li>
