@@ -46,8 +46,8 @@ function Model3D() {
     <>
     {/* <LoadingScreen started={started} setStarted={setStarted} /> */}
       <Canvas style={{ height: "100%" }} >
-        <ambientLight intensity={0.5} />
-        <directionalLight position={[5, 5, 5]} intensity={10} />
+        <ambientLight intensity={0} />
+        <directionalLight position={[5, 5, 5]} intensity={3} />
         <ScrollControls pages={7} damping={0.1}>
           
           <ScrollManager section={section} onSectionChange={setSection} />
