@@ -39,31 +39,30 @@ export function Avatar(props) {
 
   const {actions} = useAnimations([typingAnimation[0],standingAnimation[0],fallingAnimation[0]], group);
 
-  useFrame((state)=>{
-    if(headFollow){
-    group.current.getObjectByName("Head").lookAt(state.camera.position);
-    }
-    if(cursorFollow)
-    {
-      const target =new THREE.Vector3(state.mouse.x,state.mouse.y, 4);
-      group.current.getObjectByName("Spine2").lookAt(target);
-    }
-  });
+  // useFrame((state)=>{
+  //   if(headFollow){
+  //   group.current.getObjectByName("Head").lookAt(state.camera.position);
+  //   }
+  //   if(cursorFollow)
+  //   {
+  //     const target =new THREE.Vector3(state.mouse.x,state.mouse.y, 4);
+  //     group.current.getObjectByName("Spine2").lookAt(target);
+  //   }
+  // });
 
   // Perform actions
   useEffect(() => {
-      // transition
-      actions[animation].reset().fadeIn(0.5).play();
-      return () => {
-          actions[animation].reset().fadeOut(0.5).stop();
-      };
+    actions[animation].reset().fadeIn(0.5).play();
+    return () => {
+      actions[animation].reset().fadeOut(0.5);
+    };
   }, [animation]);
 
-  useEffect(() => {
-    Object.values(materials).forEach((material) => {
-        material.wireframe = wireframe
-    });
-  }, [wireframe]);
+  // useEffect(() => {
+  //   Object.values(materials).forEach((material) => {
+  //       material.wireframe = wireframe
+  //   });
+  // }, [wireframe]);
   return (
     
     <group {...props} ref={group} dispose={null}>

@@ -15,34 +15,32 @@ export const Experience = (props) => {
   const { viewport } = useThree();
   const data = useScroll();
   const [section, setSection] = useState(0);
+
+  const cameraPositionX = useMotionValue();
+  const cameraLookAtX = useMotionValue();
+
   const [characterAnimation, setCharacterAnimation] = useState("Typing");
-  
-  
+
   const characterContainerAboutRef = useRef();
-  // console.log(section)
-  // const { animation } = useControls({
-  //   animation: {
-  //     value: "Typing",
-  //     options: ["Typing", "Standing", "Falling"],
-  //   },
-  // });
 
   useEffect(() => {
+    console.log(characterAnimation);
     setCharacterAnimation("Falling");
-    const timerId = setTimeout(() => {
+    setTimeout(() => {
       setCharacterAnimation(section === 0 ? "Typing" : "Standing");
-    }, 1500);
-
-    return () => {
-      clearTimeout(timerId);
-    };
+    }, 600);
+    
   }, [section]);
+
 
   useFrame((state) => {
     const curSection = Math.floor(data.scroll.current * data.pages);
     if (curSection != section) {
       setSection(curSection);
     }
+
+    
+    
 
     // const position = new THREE.Vector3();
     // characterContainerAboutRef.current.getWorldPosition(position);
@@ -83,7 +81,7 @@ export const Experience = (props) => {
             scaleX: 0.9,
             scaleY: 0.9,
             scaleZ: 0.9,
-            rotateX: 0,
+            rotateX: 0.25,
             rotateY: 0,
             rotateZ: 0,
           }
