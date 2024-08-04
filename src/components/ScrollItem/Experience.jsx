@@ -39,9 +39,6 @@ export const Experience = (props) => {
       setSection(curSection);
     }
 
-    
-    
-
     // const position = new THREE.Vector3();
     // characterContainerAboutRef.current.getWorldPosition(position);
     // console.log([position.x, position.y, position.z])

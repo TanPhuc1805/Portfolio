@@ -39,7 +39,7 @@ export const ContactSection = () => {
   return (
     <>
       <Section>
-        <h2 className="text-5xl md:text-6xl font-[K2D] leading-snug mt-8 md:mt-0 text-gray-200">
+        <h2 className="text-3xl md:text-6xl font-[K2D] leading-snug mt-8 md:mt-0 text-gray-200">
           Contact us!
         </h2>
         <div className="mt-8 p-8 rounded-md bg-white w-5/12 max-w-full">

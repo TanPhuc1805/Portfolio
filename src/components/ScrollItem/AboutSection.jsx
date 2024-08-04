@@ -16,7 +16,7 @@ export const AboutSection = () => {
           designing user interfaces, and developing web applications.
         </p>
         <button
-          className={`bg-indigo-600 text-white py-4 px-8 rounded-lg font-bold text-lg mt-16`}
+          className={`bg-indigo-600 font-[K2D] text-white py-4 px-8 rounded-lg font-bold text-lg mt-16`}
         >
           Contact us
         </button>

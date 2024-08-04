@@ -4,7 +4,7 @@ import { Section } from "./Section";
 
 const skills = [
   {
-    title: "ThreeJS / React Three Fiber",
+    title: "ThreeJS",
     level: 80,
   },
   {
@@ -31,16 +31,12 @@ const skills = [
 
 const languages = [
   {
-    title: "🇻🇳 Vietnamese",
+    title: "Vietnamese",
     level: 100,
   },
   {
-    title: "🏴󠁧󠁢󠁥󠁮󠁧󠁿 English",
+    title: "󠁧󠁢English",
     level: 80,
-  },
-  {
-    title: "🇩🇪 Deutsch",
-    level: 70,
   },
 ];
 
@@ -48,12 +44,12 @@ export const SkillsSection = () => {
   return (
     <Section>
       <motion.div whileInView={"visible"}>
-        <h2 className="text-5xl font-bold text-white">Skills</h2>
-        <div className=" mt-8 space-y-4">
+        <h2 className="text-4xl font-[K2D] font-bold text-white">Skills</h2>
+        <div className=" mt-4 space-y-2">
           {skills.map((skill, index) => (
             <div className="w-64" key={index}>
               <motion.h3
-                className="text-xl font-bold text-gray-100"
+                className="text-l font-bold font-[K2D] text-gray-100"
                 initial={{
                   opacity: 0,
                 }}
@@ -92,12 +88,12 @@ export const SkillsSection = () => {
           ))}
         </div>
         <div>
-          <h2 className="text-5xl font-bold mt-10 text-white">Languages</h2>
-          <div className=" mt-8 space-y-4">
+          <h2 className="text-4xl font-[K2D] font-bold mt-10 text-white">Languages</h2>
+          <div className=" mt-4 space-y-2">
             {languages.map((lng, index) => (
               <div className="w-64" key={index}>
                 <motion.h3
-                  className="text-xl font-bold text-gray-100"
+                  className="text-l font-[K2D] font-bold text-gray-100"
                   initial={{
                     opacity: 0,
                   }}

@@ -24,7 +24,7 @@ const ImageTransition = () => {
         });
 
         // Animate out the current image
-        tl.to(mesh.position, { y: 20, duration: 0.3, ease: "power2.in" })
+        tl.to(mesh.position, { y: 20, duration: 0.4, ease: "power2.in" })
             .to(mesh.scale, {
                 x: 0.1,
                 y: 0.1,
@@ -40,9 +40,9 @@ const ImageTransition = () => {
                 }
             }, "-=0.25") // Overlap with the previous animation to smooth transitions
             // Animate in the new image
-            .to(mesh.position, { y: -11, duration: 0.1, ease: "power2.out" }) // Move to final position
-            .to(mesh.material, { opacity: 1, duration: 0.1 }) // Fade in opacity
-            .to(mesh.scale, { x: 1.2, y: 1.2, duration: 0.5 }); // Scale up the new image
+            .to(mesh.position, { y: -11, duration: 0.2, ease: "power2.out" }) // Move to final position
+            .to(mesh.material, { opacity: 1, duration: 0.2 }) // Fade in opacity
+            .to(mesh.scale, { x: 0.9, y: 0.9, duration: 0.8 }); // Scale up the new image
     }, [currentProject, texture]);
 
     useFrame(() => {

@@ -16,16 +16,16 @@ export const ProjectsSection = () => {
 
     return (
         <Section>
-            <div className="flex w-full h-full gap-8 items-end justify-center mb-12">
+            <div className="flex w-full h-full gap-12 items-end justify-center mb-12">
                 <button
-                    className="hover:text-indigo-600 transition-colors text-zinc-50"
+                    className="hover:text-indigo-600 transition-colors font-[K2D] text-zinc-50"
                     onClick={previousProject}
                 >
                     ← Previous
                 </button>
-                <h2 className="text-5xl font-bold  text-zinc-50">Projects</h2>
+                <h2 className="text-5xl font-bold font-[K2D] text-zinc-50">Projects</h2>
                 <button
-                    className="hover:text-indigo-600 transition-colors  text-zinc-50"
+                    className="hover:text-indigo-600 transition-colors font-[K2D] text-zinc-50"
                     onClick={nextProject}
                 >
                     Next →
