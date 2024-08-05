@@ -93,14 +93,14 @@ export const Experience = (props) => {
             rotateY: - Math.PI / 3,
             rotateZ: 0,
           },
-          3: {
-            y: -viewport.height * 3 - 1.5,
-            x: 0.5,
-            z: 4,
-            rotateX: 0,
-            rotateY: -Math.PI / 5,
-            rotateZ: 0,
-          },
+          // 3: {
+          //   y: -viewport.height * 3 - 1.5,
+          //   x: 0.5,
+          //   z: 4,
+          //   rotateX: 0,
+          //   rotateY: -Math.PI / 5,
+          //   rotateZ: 0,
+          // },
         }}
       >
         <Avatar animation={characterAnimation} />
